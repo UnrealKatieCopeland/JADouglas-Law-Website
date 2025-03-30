@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Offices of John A. Douglas | Texas Attorney</title>
+    <!-- Using Flowbite for interactive components and Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        /* Custom styling */
+        :root {
+            --primary-blue: #1e40af;
+            --primary-teal: #0d9488;
+            --primary-purple: #7e22ce;
+            --gradient-start: #1e3a8a;
+            --gradient-middle: #0d9488;
+            --gradient-end: #7e22ce;
+        }
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Logo styling */
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+        }
+        .logo-container .logo-letters {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .logo-leaf {
+            position: absolute;
+            border-radius: 50% 0;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            transform-origin: bottom right;
+            opacity: 0.15;
+        }
+        .leaf1 {
+            width: 45px;
+            height: 45px;
+            top: 0;
+            left: 0;
+            transform: rotate(45deg);
+        }
+        .leaf2 {
+            width: 35px;
+            height: 35px;
+            bottom: 5px;
+            left: 5px;
+            transform: rotate(90deg);
+            opacity: 0.25;
+        }
+        .leaf3 {
+            width: 25px;
+            height: 25px;
+            top: 15px;
+            right: 5px;
+            transform: rotate(135deg);
+            opacity: 0.35;
+        }
+        /* Hero logo styling */
+        .hero-logo-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+        }
+        .hero-logo-container .logo-letters {
+            font-size: 3.5rem;
+            color: white;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .hero-logo-leaf {
+            border-radius: 50% 0;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            transform-origin: bottom right;
+            position: absolute;
+        }
+        .hero-leaf1 {
+            width: 90px;
+            height: 90px;
+            top: 0;
+            left: 0;
+            transform: rotate(45deg);
+            opacity: 0.4;
+        }
+        .hero-leaf2 {
+            width: 70px;
+            height: 70px;
+            bottom: 10px;
+            left: 10px;
+            transform: rotate(90deg);
+            opacity: 0.5;
+        }
+        .hero-leaf3 {
+            width: 50px;
+            height: 50px;
+            top: 30px;
+            right: 10px;
+            transform: rotate(135deg);
+            opacity: 0.6;
+        }
+        /* Footer logo styling */
+        .footer-logo-container .logo-letters {
+            color: white;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .footer-logo-leaf {
+            background: linear-gradient(135deg, #ffffff40, #ffffff80);
+            opacity: 0.5;
+        }
+        .practice-card {
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        .practice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-left: 3px solid var(--primary-blue);
+        }
+        .badge-admission {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .scroll-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 99;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.4s;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+        }
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .highlight-text {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 600;
+        }
+        .gradient-heading {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .gradient-divider {
+            height: 3px;
+            width: 40px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+        }
+        .fleur-decoration {
+            position: relative;
+        }
+        .fleur-decoration::before, .fleur-decoration::after {
+            content: '\269c';
+            font-size: 1.2rem;
+            opacity: 0.3;
+            color: var(--primary-blue);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .fleur-decoration::before {
+            left: -30px;
+        }
+        .fleur-decoration::after {
+            right: -30px;
+        }
+        .fancy-border {
+            position: relative;
+        }
+        .fancy-border::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-teal), transparent);
+        }
+        .fancy-border::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+        }
+        .gradient-btn {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+            transition: all 0.3s ease;
+        }
+        .gradient-btn:hover {
+            background: linear-gradient(135deg, var(--gradient-middle), var(--gradient-start));
+            transform: translateY(-2px);
+        }
+        .section-heading-decoration {
+            position: relative;
+            display: inline-block;
+        }
+        .section-heading-decoration::before, .section-heading-decoration::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+        }
+        .section-heading-decoration::before {
+            left: -40px;
+        }
+        .section-heading-decoration::after {
+            right: -40px;
+        }
+        /* Footer styling */
+        .footer-gradient {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+        /* Custom ornamental divider */
+        .ornamental-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .ornamental-divider::before, .ornamental-divider::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(30, 64, 175, 0.2), transparent);
+        }
+        .ornamental-divider .fleur {
+            margin: 0 15px;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-4 shadow-md">
+        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+            <a href="#" class="flex items-center">
+                <!-- Logo with leaves -->
+                <div class="logo-container mr-3">
+                    <div class="logo-leaf leaf1"></div>
+                    <div class="logo-leaf leaf2"></div>
+                    <div class="logo-leaf leaf3"></div>
+                    <div class="logo-letters">JD</div>
+                </div>
+                <span class="self-center text-xl font-semibold whitespace-nowrap">Law Offices of John A. Douglas</span>
+            </a>
+            <div class="flex items-center lg:order-2">
+                <a href="#contact" class="gradient-btn text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2">Contact Us</a>
+                <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+            <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+                <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                    <li>
+                        <a href="#" class="block py-2 pr-4 pl-3 text-blue-900 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">About</a>
+                    </li>
+                    <li>
+                        <a href="#practice-areas" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">Practice Areas</a>
+                    </li>
+                    <li>
+                        <a href="#credentials" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">Credentials</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero bg-gray-800 text-white">
+        <div class="py-24 px-4 mx-auto max-w-screen-xl text-center">
+            <!-- Hero logo with leaves -->
+            <div class="hero-logo-container">
+                <div class="hero-logo-leaf hero-leaf1"></div>
+                <div class="hero-logo-leaf hero-leaf2"></div>
+                <div class="hero-logo-leaf hero-leaf3"></div>
+                <div class="logo-letters">JD</div>
+            </div>
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl font-serif">Law Offices of <span class="section-heading-decoration">John A. Douglas</span></h1>
+            <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
+                Experienced counsel in Real Estate, Creditor's Rights, and Mortgage Lending Law
+            </p>
+            <div class="mb-8 flex flex-wrap justify-center gap-2">
+                <span class="badge-admission"><i class="fas fa-gavel mr-1"></i> Texas State Bar</span>
+                <span class="badge-admission"><i class="fas fa-landmark mr-1"></i> Federal Court - Northern District of Texas</span>
+            </div>
+            <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <a href="#practice-areas" class="gradient-btn inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg focus:ring-4 focus:ring-blue-300">
+                    Our Practice Areas
+                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
+                <a href="#contact" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-400">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 gradient-heading fleur-decoration">About Our Firm</h2>
+                <div class="gradient-divider"></div>
+                <p class="text-lg text-gray-700">
+                    The Law Offices of John A. Douglas provides sophisticated legal representation for real estate transactions, creditor's rights matters, and mortgage lending law. With a dedicated focus on these specialized areas, we offer the expertise and personal attention that our clients deserve.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4 fancy-border relative pb-6 pt-6">Our Approach</h3>
+                    <p class="text-gray-700 mb-4">
+                        We understand that every client's situation is unique. That's why we take the time to thoroughly understand your specific needs and goals before developing a tailored legal strategy.
+                    </p>
+                    <p class="text-gray-700 mb-4">
+                        Our firm is committed to providing prompt, professional, and personalized legal services that achieve optimal results in a cost-effective manner.
+                    </p>
+                    <p class="text-gray-700">
+                        With admissions to both the Texas State Bar and the Federal Court for the Northern District of Texas, we can represent clients in a wide range of jurisdictions and legal matters. Our extensive experience in real estate law, creditor's rights, and mortgage lending gives us the perspective needed to effectively fight for your rights.
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Attorney John A. Douglas" class="rounded-lg shadow-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="ornamental-divider">
+        <span class="fleur">&#9884;</span>
+    </div>
+
+    <!-- Practice Areas Section -->
+    <section id="practice-areas" class="py-16 bg-gray-100">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 gradient-heading fleur-decoration">Our Practice Areas</h2>
+                <div class="gradient-divider"></div>
+                <p class="text-lg text-gray-700">
+                    We offer specialized legal services in the following areas to meet your specific needs.
+                </p>
+            </div>
+            
+            <!-- Real Estate Law Section -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-6 text-center gradient-heading">Real Estate Law</h3>
+                <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-2/3">
+                            <p class="text-gray-700 mb-6 text-lg">
+                                At the Law Offices of John A. Douglas, we provide comprehensive legal services for all your real estate needs. Whether you're buying or selling property, negotiating leases, or dealing with complex real estate disputes, our experienced team is here to protect your interests.
+                            </p>
+                            <p class="text-gray-700 mb-6">
+                                Real estate transactions involve significant financial investments and complex legal requirements. Attorney Douglas has successfully handled numerous real estate matters for individuals, investors, and businesses throughout Texas.
+                            </p>
+                            <p class="text-gray-700 mb-6">
+                                Our real estate practice encompasses various areas, including but not limited to:
+                            </p>
+                        </div>
+                        <div class="md:w-1/3">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80" alt="Real Estate Law" class="rounded-lg shadow-md w-full">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Residential Real Estate</h4>
+                            <p class="text-gray-700">
+                                We handle all aspects of residential real estate transactions:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Purchase and sale agreements</li>
+                                <li>Title examinations and insurance</li>
+                                <li>Mortgage financing</li>
+                                <li>Property disputes</li>
+                                <li>Homeowner association matters</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Commercial Real Estate</h4>
+                            <p class="text-gray-700">
+                                We support businesses with their commercial property needs:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Commercial property transactions</li>
+                                <li>Commercial leasing</li>
+                                <li>Development projects</li>
+                                <li>Land use and zoning issues</li>
+                                <li>Commercial property disputes</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Landlord-Tenant Law</h4>
+                            <p class="text-gray-700">
+                                We represent both landlords and tenants in various matters:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Lease drafting and review</li>
+                                <li>Eviction proceedings</li>
+                                <li>Lease violations</li>
+                                <li>Security deposit disputes</li>
+                                <li>Property maintenance issues</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Real Estate Litigation</h4>
+                            <p class="text-gray-700">
+                                We resolve disputes involving real property:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Boundary disputes</li>
+                                <li>Easement and right-of-way issues</li>
+                                <li>Title defects</li>
+                                <li>Real estate contract disputes</li>
+                                <li>Construction defects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Creditor's Rights Section -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-6 text-center gradient-heading">Creditor's Rights</h3>
+                <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1011&q=80" alt="Creditor's Rights Law" class="rounded-lg shadow-md w-full">
+                        </div>
+                        <div class="md:w-2/3">
+                            <p class="text-gray-700 mb-6 text-lg">
+                                The Law Offices of John A. Douglas is committed to protecting the rights of creditors and helping them recover amounts owed through effective legal strategies. We understand the challenges creditors face when attempting to collect debts and enforce their rights.
+                            </p>
+                            <p class="text-gray-700 mb-6">
+                                Attorney Douglas has extensive experience representing banks, financial institutions, businesses, and individual creditors in various debt collection and creditor's rights matters. We take pride in our ability to navigate complex legal processes to help our clients achieve their collection goals.
+                            </p>
+                            <p class="text-gray-700 mb-6">
+                                Our creditor's rights practice focuses on various aspects of debt collection and enforcement, including:
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Debt Collection</h4>
+                            <p class="text-gray-700">
+                                We pursue comprehensive debt collection services:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Commercial debt collection</li>
+                                <li>Consumer debt recovery</li>
+                                <li>Judgment enforcement</li>
+                                <li>Asset investigation</li>
+                                <li>Settlement negotiations</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Foreclosure Proceedings</h4>
+                            <p class="text-gray-700">
+                                We help creditors with secured interests in property:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Residential foreclosures</li>
+                                <li>Commercial foreclosures</li>
+                                <li>Judicial and non-judicial foreclosures</li>
+                                <li>Deed in lieu of foreclosure</li>
+                                <li>Post-foreclosure matters</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Bankruptcy Creditor Representation</h4>
+                            <p class="text-gray-700">
+                                We protect creditors' interests in bankruptcy proceedings:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Proof of claim filings</li>
+                                <li>Relief from automatic stay</li>
+                                <li>Objections to discharge</li>
+                                <li>Preference and fraudulent transfer defense</li>
+                                <li>Chapter 7, 11, and 13 proceedings</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Lien Enforcement</h4>
+                            <p class="text-gray-700">
+                                We help creditors enforce various types of liens:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Mechanic's and materialman's liens</li>
+                                <li>Judgment liens</li>
+                                <li>Tax liens</li>
+                                <li>Landlord's liens</li>
+                                <li>Garnishment proceedings</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mortgage Lending Law Section -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-6 text-center gradient-heading">Mortgage Lending Law</h3>
+                <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-2/3">
+                            <p class="text-gray-700 mb-6 text-lg">
+                                At the Law Offices of John A. Douglas, we provide comprehensive legal representation in all aspects of mortgage lending law. We advise lenders, borrowers, and other participants in the mortgage industry on complex legal matters related to loan origination, servicing, and enforcement.
+                            </p>
+                            <p class="text-gray-700 mb-6">
+                                Mortgage lending involves intricate regulations and requirements at both state and federal levels. Attorney Douglas has extensive experience in navigating these complex legal frameworks to help clients achieve their goals while maintaining regulatory compliance.
+                            </p>
+                            <p class="text-gray-700 mb-6">
+                                Our mortgage lending practice encompasses a wide range of services, including:
+                            </p>
+                        </div>
+                        <div class="md:w-1/3">
+                            <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mortgage Lending Law" class="rounded-lg shadow-md w-full">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Loan Documentation</h4>
+                            <p class="text-gray-700">
+                                We assist with all aspects of mortgage loan documentation:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Promissory notes</li>
+                                <li>Mortgages and deeds of trust</li>
+                                <li>Security agreements</li>
+                                <li>Closing documents</li>
+                                <li>Loan modifications</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Regulatory Compliance</h4>
+                            <p class="text-gray-700">
+                                We help navigate the complex regulatory landscape:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Truth in Lending Act (TILA)</li>
+                                <li>Real Estate Settlement Procedures Act (RESPA)</li>
+                                <li>Equal Credit Opportunity Act (ECOA)</li>
+                                <li>Fair Housing Act</li>
+                                <li>State lending and licensing requirements</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Default Servicing</h4>
+                            <p class="text-gray-700">
+                                We provide legal guidance for managing defaulted loans:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Default notices</li>
+                                <li>Foreclosure proceedings</li>
+                                <li>Loss mitigation options</li>
+                                <li>Deed in lieu of foreclosure</li>
+                                <li>Short sales</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-bold mb-3 highlight-text">Secondary Market Transactions</h4>
+                            <p class="text-gray-700">
+                                We support mortgage industry participants in secondary market activities:
+                            </p>
+                            <ul class="list-disc pl-6 mt-2 text-gray-700">
+                                <li>Loan purchases and sales</li>
+                                <li>Securitization</li>
+                                <li>Due diligence reviews</li>
+                                <li>Investor requirements</li>
+                                <li>Compliance with GSE guidelines</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="ornamental-divider">
+        <span class="fleur">&#9884;</span>
+    </div>
+
+    <!-- Credentials Section -->
+    <section id="credentials" class="py-16 bg-gray-100">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 gradient-heading fleur-decoration">Credentials & Admissions</h2>
+                <div class="gradient-divider"></div>
+                <p class="text-lg text-gray-700">
+                    John A. Douglas is committed to maintaining the highest standards of legal excellence.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-200 pb-2 gradient-heading">Bar Admissions</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-900 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <div>
+                                <span class="font-medium">Texas State Bar</span>
+                                <p class="text-gray-600 text-sm">Licensed to practice in all Texas state courts</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-900 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <div>
+                                <span class="font-medium">U.S. District Court - Northern District of Texas</span>
+                                <p class="text-gray-600 text-sm">Admitted to practice in federal court</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-200 pb-2 gradient-heading">Professional Affiliations</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-900 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <div>
+                                <span class="font-medium">Texas Bar Association</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-900 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <div>
+                                <span class="font-medium">American Bar Association</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="ornamental-divider">
+        <span class="fleur">&#9884;</span>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 gradient-heading fleur-decoration">Contact Us</h2>
+                <div class="gradient-divider"></div>
+                <p class="text-lg text-gray-700">
+                    We're here to help with your legal needs. Reach out to schedule a consultation.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2 bg-white rounded-lg p-8 shadow-md">
+                    <h3 class="text-2xl font-bold mb-4 fancy-border relative pb-6 pt-6">Get In Touch</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Your Name</label>
+                            <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="John Doe" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your Email</label>
+                            <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Your Phone</label>
+                            <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="(123) 456-7890">
+                        </div>
+                        <div class="mb-4">
+                            <label for="practice" class="block mb-2 text-sm font-medium text-gray-900">Practice Area</label>
+                            <select id="practice" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                <option value="">Select a practice area</option>
+                                <option value="real-estate">Real Estate Law</option>
+                                <option value="creditors-rights">Creditor's Rights</option>
+                                <option value="mortgage">Mortgage Lending Law</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Your Message</label>
+                            <textarea id="message" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="gradient-btn text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-lg p-8 h-full shadow-md">
+                        <h3 class="text-2xl font-bold mb-4 fancy-border relative pb-6 pt-6">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-blue-900 mr-3 mt-1 w-5"></i>
+                                <div>
+                                    <p class="font-medium">Phone</p>
+                                    <p class="text-gray-700">(945) 544-8650</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-blue-900 mr-3 mt-1 w-5"></i>
+                                <div>
+                                    <p class="font-medium">Email</p>
+                                    <p class="text-gray-700">John@JADoulasLaw.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-blue-900 mr-3 mt-1 w-5"></i>
+                                <div>
+                                    <p class="font-medium">Business Hours</p>
+                                    <p class="text-gray-700">Monday - Friday: 9:00 AM - 5:00 PM</p>
+                                    <p class="text-gray-700">Saturday - Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="font-bold text-lg mb-6">Schedule a Consultation</h4>
+                            <p class="text-gray-700 mb-6">
+                                Our initial consultations are designed to understand your specific situation and determine how we can best assist you. We'll discuss the details of your case, potential legal strategies, and answer any questions you might have.
+                            </p>
+                            <a href="tel:9455448650" class="gradient-btn inline-block text-white py-2 px-4 rounded-lg font-medium text-center">Call Now</a>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold text-lg mb-2">Connect With Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-blue-900 hover:text-blue-700">
+                                    <i class="fab fa-facebook-f text-lg"></i>
+                                </a>
+                                <a href="#" class="text-blue-900 hover:text-blue-700">
+                                    <i class="fab fa-twitter text-lg"></i>
+                                </a>
+                                <a href="#" class="text-blue-900 hover:text-blue-700">
+                                    <i class="fab fa-linkedin-in text-lg"></i>
+                                </a>
+                                <a href="#" class="text-blue-900 hover:text-blue-700">
+                                    <i class="fab fa-instagram text-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="footer-gradient text-white py-8">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 flex items-center">
+                    <!-- Footer logo with leaves -->
+                    <div class="logo-container footer-logo-container mr-3">
+                        <div class="logo-leaf leaf1 footer-logo-leaf"></div>
+                        <div class="logo-leaf leaf2 footer-logo-leaf"></div>
+                        <div class="logo-leaf leaf3 footer-logo-leaf"></div>
+                        <div class="logo-letters">JD</div>
+                    </div>
+                    <span class="ml-2">Law Offices of John A. Douglas</span>
+                </div>
+                <div class="text-sm text-gray-400">
+                    <p>&copy; 2025 Law Offices of John A. Douglas. All rights reserved.</p>
+                    <p>Attorney Advertising. This website is designed for general information only.</p>
+                    <p class="mt-2">Results depicted do not guarantee similar outcomes in future cases.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div id="scrollTopBtn" class="scroll-top rounded-full p-3 shadow-lg">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+        </svg>
+    </div>
+
+    <!-- Flowbite JS for interactive components -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script>
+        // Custom JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Scroll to top button
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
